@@ -18,19 +18,19 @@ $ curl http://localhost:8000/users
 Watch the log outout from the bootRun command
 
 ### Expected Behaviour
-The header X-B3-ParentSpanId should exist on all requests and have the same value.
+The header `X-B3-ParentSpanId` should exist on all requests and have the same value.
 
 ### Actual Behaviour
-The header X-B3-ParentSpanId only exists on the first call. 
+The header `X-B3-ParentSpanId` only exists on the first call. 
 
 ## Troubleshooting
 
 * The expected behaviour works before commit [f6a0e38c7195b9bd9c418195d0c5e22db4e46de6](https://github.com/spring-cloud/spring-cloud-sleuth/commit/f6a0e38c7195b9bd9c418195d0c5e22db4e46de6)
-* The expected behaviour works when only spring-boot-starter-webflux is added as a dependency (Running in Netty).
-* The expected behaviour works when spring-boot-starter-webflux and spring-boot-starter-tomcat are added as dependencies
-* The actual behaviour is reproduced when the project contains both a dependency to spring-boot-starter-webflux and spring-boot-starter-web
+* The expected behaviour works when only `spring-boot-starter-webflux` is added as a dependency (Running in Netty).
+* The expected behaviour works when `spring-boot-starter-webflux` and `spring-boot-starter-tomcat` are added as dependencies
+* The actual behaviour is reproduced when the project contains both a dependency to `spring-boot-starter-webflux` and `spring-boot-starter-web`
 
-So my investigation concludes that something happens when spring-boot-starter-web is on the classpath, resulting in a lost context when the second call is performed.
+So my investigation concludes that something happens when `spring-boot-starter-web` is on the classpath, resulting in a lost context when the second call is performed.
 
 The reason for using both spring-boot-starter-webflux and spring-boot-starter-web is due to the lack of webflux-support in  springfox [gh-1773](https://github.com/springfox/springfox/issues/1773)
 
