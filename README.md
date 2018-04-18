@@ -1,7 +1,7 @@
 # Spring Cloud Sleuth loosing ParentSpanId
 
 This repository contains a minor Spring Boot 2 application with the purpose of replicating a bug in Spring Cloud Sleuth
-where the ParentSpanId is lost on subsequent calls.
+where the ParentSpanId is lost on subsequent calls. See [gh-949](https://github.com/spring-cloud/spring-cloud-sleuth/issues/949)
 
 ## Run
 Execute the following command to start the service on port 8000
